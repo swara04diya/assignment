@@ -144,7 +144,7 @@ curl -s -X POST http://localhost:5080/definitions \
   ]
 }
 EOF
-## 📄 License
+### 📄 License
 
 This project is licensed under the **MIT License**.
 
