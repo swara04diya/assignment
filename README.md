@@ -110,3 +110,44 @@ Pick one of the following:
 git clone https://github.com/<your-user>/workflow-engine.git
 cd workflow-engine/src/WorkflowEngine
 
+---
+
+### Open in VS Code (recommended)
+
+If you use VS Code:
+
+```bash
+code .
+cd workflow-engine/src/WorkflowEngine   # (already here if you followed clone steps)
+dotnet restore
+dotnet build
+dotnet run --urls http://localhost:5080
+
+###First API Call: Create a Sample Workflow Definition
+curl -s -X POST http://localhost:5080/definitions \
+  -H "Content-Type: application/json" \
+  -d @- <<'EOF'
+{
+  "id":"doc-approval",
+  "name":"Document Approval",
+  "states":[
+    {"id":"draft","name":"Draft","isInitial":true,"isFinal":false,"enabled":true},
+    {"id":"review","name":"In Review","isInitial":false,"isFinal":false,"enabled":true},
+    {"id":"approved","name":"Approved","isInitial":false,"isFinal":true,"enabled":true},
+    {"id":"rejected","name":"Rejected","isInitial":false,"isFinal":true,"enabled":true}
+  ],
+  "actions":[
+    {"id":"submit","name":"Submit for Review","fromStates":["draft"],"toState":"review","enabled":true},
+    {"id":"approve","name":"Approve","fromStates":["review"],"toState":"approved","enabled":true},
+    {"id":"reject","name":"Reject","fromStates":["review"],"toState":"rejected","enabled":true},
+    {"id":"revise","name":"Revise","fromStates":["review","rejected"],"toState":"draft","enabled":true}
+  ]
+}
+EOF
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+You’re free to use, modify, distribute, and sublicense this software, provided you include the copyright and license notice in copies.
+
+
