@@ -1,6 +1,5 @@
 # assignment
-$repoRoot = "C:\Users\PERSONAL\OneDrive\Desktop\assignmentcdc\workflow-engine"
-Set-Location $repoRoot
+
 
 @'
 # Minimal Workflow Engine Backend (ASP.NET 8)
