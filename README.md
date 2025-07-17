@@ -1,7 +1,7 @@
 # assignment
 
 
-@'
+
 # Minimal Workflow Engine Backend (ASP.NET 8)
 
 A tiny yet fully‑functional backend service that lets you **define** state‑machine workflows, **start** workflow instances, **execute** transitions with validation, and **inspect** definitions & instances. It’s purposely lightweight—an in‑memory store by default—with clean boundaries so you can swap in a database or message bus later.
